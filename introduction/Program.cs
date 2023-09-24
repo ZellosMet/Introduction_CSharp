@@ -1,4 +1,5 @@
 ﻿//#define CONSOLE_SETTINGS
+//#define CONSOLE_IN_OUT
 
 using System;
 using System.Collections.Generic;
@@ -28,6 +29,8 @@ namespace introduction
             Console.BackgroundColor = ConsoleColor.Black; 
 #endif
 
+#if CONSOLE_IN_OUT
+
             Console.Write("Введите ваше имя: ");
             string first_name = Console.ReadLine();
 
@@ -45,6 +48,7 @@ namespace introduction
 
             //3) Интерполяция строк:
             Console.WriteLine($"Имя: {{first_name}} фамилия: {last_name} возраст: {age} лет");
+#endif           
         }
     }
 }

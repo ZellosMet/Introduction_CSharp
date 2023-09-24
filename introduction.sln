@@ -5,6 +5,10 @@ VisualStudioVersion = 17.3.32901.215
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "introduction", "introduction\introduction.csproj", "{6DA2E0BA-D2A1-426A-BCFC-E9DB159F2323}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shooter", "Shooter\Shooter.csproj", "{DA48E98A-B8E1-4D46-ADB2-E89219496506}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Geometry", "Geometry\Geometry.csproj", "{4757C71F-2D6F-4798-B34F-5C3EBE2235CC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{6DA2E0BA-D2A1-426A-BCFC-E9DB159F2323}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6DA2E0BA-D2A1-426A-BCFC-E9DB159F2323}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6DA2E0BA-D2A1-426A-BCFC-E9DB159F2323}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA48E98A-B8E1-4D46-ADB2-E89219496506}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA48E98A-B8E1-4D46-ADB2-E89219496506}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA48E98A-B8E1-4D46-ADB2-E89219496506}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA48E98A-B8E1-4D46-ADB2-E89219496506}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4757C71F-2D6F-4798-B34F-5C3EBE2235CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4757C71F-2D6F-4798-B34F-5C3EBE2235CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4757C71F-2D6F-4798-B34F-5C3EBE2235CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4757C71F-2D6F-4798-B34F-5C3EBE2235CC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

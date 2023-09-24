@@ -11,7 +11,7 @@ namespace Shooter
         static void Main(string[] args)
         {
 
-            int side_length = 11;            //Длина стороны игровой зоны
+            int side_length = 11;       //Длина стороны игровой зоны
             int game_zone;              //Общей полощадь игровой зоны
             int player_position;        //Начальная позиция игрока(всегда в центре)
             ConsoleKey code_key;        //Код клавиши

@@ -77,7 +77,7 @@ namespace Shooter
                     //******
                     //Обработчик нажатия клавиш
 
-                    code_key = Console.ReadKey(false).Key;
+                    code_key = Console.ReadKey(true).Key;
                     switch (code_key)
                     {
                         case ConsoleKey.W:                        

@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace introduction
+namespace introductio
 {
     internal class Program
     {

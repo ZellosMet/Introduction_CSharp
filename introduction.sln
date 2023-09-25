@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shooter", "Shooter\Shooter.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Geometry", "Geometry\Geometry.csproj", "{4757C71F-2D6F-4798-B34F-5C3EBE2235CC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataTypes", "DataTypes\DataTypes.csproj", "{78C8AC7B-80B0-4697-8665-E436C9BDF6FF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{4757C71F-2D6F-4798-B34F-5C3EBE2235CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4757C71F-2D6F-4798-B34F-5C3EBE2235CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4757C71F-2D6F-4798-B34F-5C3EBE2235CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78C8AC7B-80B0-4697-8665-E436C9BDF6FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78C8AC7B-80B0-4697-8665-E436C9BDF6FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78C8AC7B-80B0-4697-8665-E436C9BDF6FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78C8AC7B-80B0-4697-8665-E436C9BDF6FF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

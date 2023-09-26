@@ -16,7 +16,7 @@ namespace Converter
 			Console.Write("Введите дробное число -> ");
 			string num = Console.ReadLine();
 			string[] slicing_num = num.Split('.', ',');
-			Console.WriteLine(num + " грн. - это " + slicing_num[0] + " грн. " + slicing_num[1] + " коп.");
+			Console.WriteLine(num + " грн. - это " + slicing_num[0] + " грн. " + ((Convert.ToDouble(slicing_num[1] = "," + slicing_num[1]))*100) + " коп.");
 			Console.WriteLine(delim);
 
 			Console.WriteLine("Вычисление стоимости покупки.");
@@ -53,6 +53,7 @@ namespace Converter
 			double oil_price = Convert.ToDouble(Console.ReadLine());
 			Console.WriteLine("Поездка на дачу и обратно обойдётся в " + (consumption/100*distance*oil_price*2) + " грн.");
 			Console.WriteLine();
+ 
 		}
 	}
 }

@@ -22,11 +22,11 @@ namespace Converter
 			Console.WriteLine("Вычисление стоимости покупки.");
 			Console.WriteLine("Введите исходные данные:");
 			Console.Write("Цену тетради (грн.) -> ");
-			double notebook_price = Convert.ToDouble(Console.ReadLine());
+			decimal notebook_price = Convert.ToDecimal(Console.ReadLine());
 			Console.Write("Количество тетрадей -> ");
 			int number_of_notebook = Convert.ToInt32(Console.ReadLine());
 			Console.Write("Цену карандаша (грн.) -> ");
-			double pencil_price = Convert.ToDouble(Console.ReadLine());
+			decimal pencil_price = Convert.ToDecimal(Console.ReadLine());
 			Console.Write("Количество карандашей -> ");
 			int number_of_pencils = Convert.ToInt32(Console.ReadLine());
 			Console.WriteLine("Стоимость покупки: " + ((notebook_price * number_of_notebook) + (pencil_price * number_of_pencils)) + " грн.");
@@ -35,9 +35,9 @@ namespace Converter
 			Console.WriteLine("Вычисление стоимости покупки.");
 			Console.WriteLine("Введите исходные данные:");
 			Console.Write("Цену тетради (грн.) -> ");
-			notebook_price = Convert.ToDouble(Console.ReadLine());
+			notebook_price = Convert.ToDecimal(Console.ReadLine());
 			Console.Write("Цену обложки (грн.) -> ");
-			double cover_price = Convert.ToDouble(Console.ReadLine());
+			decimal cover_price = Convert.ToDecimal(Console.ReadLine());
 			Console.Write("Количество комплектов (шт.) -> ");
 			int number_of_sets = Convert.ToInt32(Console.ReadLine());
 			Console.WriteLine("Стоимость покупки: " + ((notebook_price + cover_price) * number_of_sets) + " грн.");
@@ -46,11 +46,11 @@ namespace Converter
 
 			Console.WriteLine("Вычисление стоимости поездки на дачу и обратно");
 			Console.Write("Расстояние до дачи (км) -> ");
-			double distance = Convert.ToDouble(Console.ReadLine());
+			decimal distance = Convert.ToDecimal(Console.ReadLine());
 			Console.Write("Расход бензина (литров на 100 км пробега) -> ");
-			double consumption = Convert.ToDouble(Console.ReadLine());
+			decimal consumption = Convert.ToDecimal(Console.ReadLine());
 			Console.Write("Цена литра бензина (грн.) -> ");
-			double oil_price = Convert.ToDouble(Console.ReadLine());
+			decimal oil_price = Convert.ToDecimal(Console.ReadLine());
 			Console.WriteLine("Поездка на дачу и обратно обойдётся в " + (consumption/100*distance*oil_price*2) + " грн.");
 			Console.WriteLine();
  

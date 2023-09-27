@@ -46,12 +46,12 @@ namespace Converter
 
 			Console.WriteLine("Вычисление стоимости поездки на дачу и обратно");
 			Console.Write("Расстояние до дачи (км) -> ");
-			decimal distance = Convert.ToDecimal(Console.ReadLine());
+			double distance = Convert.ToDouble(Console.ReadLine());
 			Console.Write("Расход бензина (литров на 100 км пробега) -> ");
-			decimal consumption = Convert.ToDecimal(Console.ReadLine());
+			double consumption = Convert.ToDouble(Console.ReadLine());
 			Console.Write("Цена литра бензина (грн.) -> ");
 			decimal oil_price = Convert.ToDecimal(Console.ReadLine());
-			Console.WriteLine("Поездка на дачу и обратно обойдётся в " + (consumption/100*distance*oil_price*2) + " грн.");
+			Console.WriteLine("Поездка на дачу и обратно обойдётся в " + ((decimal)(consumption/100*distance)*oil_price*2) + " грн.");
 			Console.WriteLine();
  
 		}

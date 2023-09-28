@@ -6,11 +6,106 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Schema;
 
 namespace Arrays
 {	
 	internal class Program
 	{
+		private static int Sum(int[] array)
+		{
+			return array.Sum();
+		}
+		private static int Sum(int[,] array)
+		{
+			int sum = 0;
+			for (int i = 0; i < array.GetLength(0); i++)
+				for (int j = 0; j < array.GetLength(1); j++)
+					sum += array[i, j];
+			return sum;
+		}
+		private static int Sum(int[][] array)
+		{
+			int sum = 0, total_amount = 0;
+			for (int i = 0; i < array.Length; i++)
+			{
+				for (int j = 0; j < array[i].Length; j++)
+				{
+					sum = array[i].Sum();
+				}
+				total_amount += sum;
+			}
+			return total_amount;
+		}
+		private static double AVG(int[] array)
+		{
+
+			return (double)array.Sum() / array.Length;
+		}
+		private static double AVG(int[,] array)
+		{
+			return (double)Sum(array) / array.Length;
+		}
+		private static double AVG(int[][] array)
+		{
+			int items = 0, total_items = 0;
+			for (int i = 0; i < array.Length; i++)
+				{ 
+					for (int j = 0; j < array[i].Length; j++)
+						items = array[i].Length;
+					total_items += items;
+				}
+			return (double)Sum(array) / total_items;
+		}
+		private static int Max(int[] array)
+		{ 
+			return array.Max();
+		}
+		private static int Max(int[,] array)
+		{
+			int	max = 0;
+			for (int i = 0; i < array.GetLength(0); i++)
+				for (int j = 0; j < array.GetLength(1); j++)
+					max = array[i, j] > max ? max = array[i, j] : max;
+			return max;
+		}
+		private static int Max(int[][] array)
+		{
+			int max = 0;
+			int[] max_arr = new int[array.Length];
+			for (int i = 0; i < array.Length; i++)
+			{
+				for (int j = 0; j < array[i].Length; j++)
+					max = array[i].Max();
+				max_arr[i] = max;
+			}
+			return max_arr.Max();
+		}
+		private static int Min(int[] array)
+		{
+			return array.Min();
+		}
+		private static int Min(int[,] array)
+		{
+			int min = array[0,0];
+			for (int i = 0; i < array.GetLength(0); i++)
+				for (int j = 0; j < array.GetLength(1); j++)
+					min = array[i, j] < min ? min = array[i, j] : min;
+			return min;
+		}
+		private static int Min(int[][] array)
+		{
+			int min = 0;
+			int[] min_arr = new int[array.Length];
+			for (int i = 0; i < array.Length; i++)
+			{
+				for (int j = 0; j < array[i].Length; j++)
+					min = array[i].Min();
+				min_arr[i] = min;
+			}
+			return min_arr.Min();
+		}
+
 		static readonly string delim = "\n-------------------------------------------------------------------------\n";
 		static void Main(string[] args)
 		{
@@ -93,53 +188,26 @@ namespace Arrays
 
 			//Одномерный массив
 			Console.WriteLine("Одномертный массив: ");
-			Console.WriteLine("Сумма элементов массива: " + array.Sum());
-			Console.WriteLine("Среднее-арифметическое элементов массива: " + ((double)array.Sum()/array.Length));
-			Console.WriteLine("Максимальный элемент массива: " + array.Max());
-			Console.WriteLine("Минимальный элемент массива: " + array.Min());
+			Console.WriteLine("Сумма элементов массива: " + Sum(array));
+			Console.WriteLine("Среднее-арифметическое элементов массива: " + AVG(array));
+			Console.WriteLine("Максимальный элемент массива: " + Max(array));
+			Console.WriteLine("Минимальный элемент массива: " + Min(array));
 			Console.WriteLine(delim);
 
 			//Двумерный массив
-			int sum = 0, min = doubl_array[0,0], max = 0;
 			Console.WriteLine("Двумерный массив: ");
-			for (int i = 0; i < doubl_array.GetLength(0); i++)
-			{
-				for (int j = 0; j < doubl_array.GetLength(1); j++)
-				{ 
-					sum += doubl_array[i,j];
-					max = doubl_array[i, j] > max ? max = doubl_array[i, j] : max;
-					min = doubl_array[i, j] < min ? min = doubl_array[i, j] : min;
-				}
-			}
-			Console.WriteLine("Сумма элементов массива: " + sum);
-			Console.WriteLine("Среднее-арифметическое элементов массива: " + ((double)sum/doubl_array.Length));
-			Console.WriteLine("Максимальный элемент массива: " + max);
-			Console.WriteLine("Минимальный элемент массива: " + min);
+			Console.WriteLine("Сумма элементов массива: " + Sum(doubl_array));
+			Console.WriteLine("Среднее-арифметическое элементов массива: " + AVG(doubl_array));
+			Console.WriteLine("Максимальный элемент массива: " + Max(doubl_array));
+			Console.WriteLine("Минимальный элемент массива: " + Min(doubl_array));
 			Console.WriteLine(delim);
 
 			//Зубной массив
-			int total_amount = 0, item = 0, total_item = 0;
-			int[] max_arr = new int[jagget_array.Length]; 
-			int[] min_arr = new int[jagget_array.Length]; 
 			Console.WriteLine("Зубчатый массив: ");
-			for (int i = 0; i < jagget_array.Length; i++)
-			{
-				for (int j = 0; j < jagget_array[i].Length; j++)
-				{
-					sum = jagget_array[i].Sum();
-					item = jagget_array[i].Length;
-					max = jagget_array[i].Max();
-					min = jagget_array[i].Min();
-				}
-				total_amount += sum;
-				total_item += item;
-				max_arr[i] = max;
-				min_arr[i] = min;
-			}
-			Console.WriteLine("Сумма элементов массива: " + total_amount);
-			Console.WriteLine("Среднее-арифметическое элементов массива: " + ((double)total_amount / total_item));
-			Console.WriteLine("Максимальный элемент массива: " + max_arr.Max());
-			Console.WriteLine("Минимальный элемент массива: " + min_arr.Min());
+			Console.WriteLine("Сумма элементов массива: " + Sum(jagget_array));
+			Console.WriteLine("Среднее-арифметическое элементов массива: " + AVG(jagget_array));
+			Console.WriteLine("Максимальный элемент массива: " + Max(jagget_array));
+			Console.WriteLine("Минимальный элемент массива: " + Min(jagget_array));
 			Console.WriteLine(delim);
 		}
 	}

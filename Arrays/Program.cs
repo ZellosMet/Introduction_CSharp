@@ -88,8 +88,59 @@ namespace Arrays
 						Console.Write(jagget_array_2[i][j, l] + "\t");
 					Console.WriteLine();
 				}
-			Console.WriteLine(); 
+			Console.WriteLine();
 #endif
+
+			//Одномерный массив
+			Console.WriteLine("Одномертный массив: ");
+			Console.WriteLine("Сумма элементов массива: " + array.Sum());
+			Console.WriteLine("Среднее-арифметическое элементов массива: " + ((double)array.Sum()/array.Length));
+			Console.WriteLine("Максимальный элемент массива: " + array.Max());
+			Console.WriteLine("Минимальный элемент массива: " + array.Min());
+			Console.WriteLine(delim);
+
+			//Двумерный массив
+			int sum = 0, min = doubl_array[0,0], max = 0;
+			Console.WriteLine("Двумерный массив: ");
+			for (int i = 0; i < doubl_array.GetLength(0); i++)
+			{
+				for (int j = 0; j < doubl_array.GetLength(1); j++)
+				{ 
+					sum += doubl_array[i,j];
+					max = doubl_array[i, j] > max ? max = doubl_array[i, j] : max;
+					min = doubl_array[i, j] < min ? min = doubl_array[i, j] : min;
+				}
+			}
+			Console.WriteLine("Сумма элементов массива: " + sum);
+			Console.WriteLine("Среднее-арифметическое элементов массива: " + ((double)sum/doubl_array.Length));
+			Console.WriteLine("Максимальный элемент массива: " + max);
+			Console.WriteLine("Минимальный элемент массива: " + min);
+			Console.WriteLine(delim);
+
+			//Зубной массив
+			int total_amount = 0, item = 0, total_item = 0;
+			int[] max_arr = new int[jagget_array.Length]; 
+			int[] min_arr = new int[jagget_array.Length]; 
+			Console.WriteLine("Зубчатый массив: ");
+			for (int i = 0; i < jagget_array.Length; i++)
+			{
+				for (int j = 0; j < jagget_array[i].Length; j++)
+				{
+					sum = jagget_array[i].Sum();
+					item = jagget_array[i].Length;
+					max = jagget_array[i].Max();
+					min = jagget_array[i].Min();
+				}
+				total_amount += sum;
+				total_item += item;
+				max_arr[i] = max;
+				min_arr[i] = min;
+			}
+			Console.WriteLine("Сумма элементов массива: " + total_amount);
+			Console.WriteLine("Среднее-арифметическое элементов массива: " + ((double)total_amount / total_item));
+			Console.WriteLine("Максимальный элемент массива: " + max_arr.Max());
+			Console.WriteLine("Минимальный элемент массива: " + min_arr.Min());
+			Console.WriteLine(delim);
 		}
 	}
 }

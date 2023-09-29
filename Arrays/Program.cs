@@ -191,7 +191,7 @@ namespace Arrays
 			Console.WriteLine("Сумма элементов массива: " + Sum(array));
 			Console.WriteLine("Среднее-арифметическое элементов массива: " + AVG(array));
 			Console.WriteLine("Максимальный элемент массива: " + Max(array));
-			Console.WriteLine("Минимальный элемент массива: " + Min(array));
+			Console.WriteLine("Минимальный элемент массива: " + Min(array)) ;
 			Console.WriteLine(delim);
 
 			//Двумерный массив

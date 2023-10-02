@@ -180,6 +180,7 @@ namespace Fraction
 			rvalue.ToImproper();
 			Fraction tmp = new Fraction(lvalue.Numerator * rvalue.Denominator - rvalue.Numerator * lvalue.Denominator, lvalue.Denominator * rvalue.Denominator).ToProper().Reduce();
 			if (tmp.Numerator < 0) tmp.Numerator *= -1;
+			if (tmp.Denominator < 0) tmp.Denominator *= -1;
 			lvalue.ToProper();
 			rvalue.ToProper();
 			return tmp;

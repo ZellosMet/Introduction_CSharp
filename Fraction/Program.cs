@@ -263,6 +263,7 @@ namespace Fraction
 			return !(lvalue > rvalue);
 		}
 
+		/////////////////////////////////////////////  ПРИВЕДЕНИЕ ТИПОВ  //////////////////////////////////////
 		public static explicit operator int(Fraction obj)
 		{
 			return obj.Integer;

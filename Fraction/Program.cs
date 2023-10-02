@@ -20,8 +20,7 @@ namespace Fraction
 		int numerator;
 		int denominator;
 		
-		///////////////////////////////////  ГЕТ/СЕТ  ////////////////////////////////////////////////////////
-		
+		///////////////////////////////////  ГЕТ/СЕТ  ////////////////////////////////////////////////////////		
 		int Integer
 		{
 			get { return integer; }
@@ -160,7 +159,10 @@ namespace Fraction
 		{
 			lvalue.ToImproper();
 			rvalue.ToImproper();
-			return new Fraction(lvalue.Numerator * rvalue.Denominator + rvalue.Numerator * lvalue.Denominator, lvalue.Denominator * rvalue.Denominator).ToProper().Reduce();
+			Fraction tmp = new Fraction(lvalue.Numerator * rvalue.Denominator + rvalue.Numerator * lvalue.Denominator, lvalue.Denominator * rvalue.Denominator).ToProper().Reduce();
+			lvalue.ToProper();
+			rvalue.ToProper();
+			return tmp;
 		}
 		public static Fraction operator+(Fraction obj, int value)
 		{
@@ -178,6 +180,8 @@ namespace Fraction
 			rvalue.ToImproper();
 			Fraction tmp = new Fraction(lvalue.Numerator * rvalue.Denominator - rvalue.Numerator * lvalue.Denominator, lvalue.Denominator * rvalue.Denominator).ToProper().Reduce();
 			if (tmp.Numerator < 0) tmp.Numerator *= -1;
+			lvalue.ToProper();
+			rvalue.ToProper();
 			return tmp;
 		}
 		public static Fraction operator-(Fraction lvalue, int value)
@@ -193,7 +197,10 @@ namespace Fraction
 		{
 			lvalue.ToImproper();
 			rvalue.ToImproper();
-			return new Fraction(lvalue.Numerator * rvalue.Numerator, lvalue.Denominator * rvalue.Denominator).ToProper().Reduce();
+			Fraction tmp = new Fraction(lvalue.Numerator * rvalue.Numerator, lvalue.Denominator * rvalue.Denominator).ToProper().Reduce();
+			lvalue.ToProper();
+			rvalue.ToProper();
+			return tmp;
 		}
 		public static Fraction operator*(Fraction obj, int value)
 		{
@@ -210,28 +217,43 @@ namespace Fraction
 		{
 			return obj / new Fraction(value);
 		}
+
+		/////////////////////////////////////////////  ( == / != )  ///////////////////////////////////////////
 		public static bool operator ==(Fraction lvalue, Fraction rvalue)
 		{
 			lvalue.ToImproper();
-			rvalue.ToImproper();		
-			return lvalue.Numerator * rvalue.Denominator == rvalue.Numerator * lvalue.Denominator;
+			rvalue.ToImproper();
+			bool tmp = lvalue.Numerator * rvalue.Denominator == rvalue.Numerator * lvalue.Denominator;
+			lvalue.ToProper();
+			rvalue.ToProper();
+			return tmp;
 		}		
 		public static bool operator !=(Fraction lvalue, Fraction rvalue)
 		{
 			return !(lvalue.Numerator * rvalue.Denominator == rvalue.Numerator * lvalue.Denominator);
 		}
+
+		/////////////////////////////////////////////  ( > / < )  ///////////////////////////////////////////
 		public static bool operator >(Fraction lvalue, Fraction rvalue)
 		{
 			lvalue.ToImproper();
 			rvalue.ToImproper();
-			return lvalue.Numerator * rvalue.Denominator > rvalue.Numerator * lvalue.Denominator;
+			bool tmp = lvalue.Numerator * rvalue.Denominator > rvalue.Numerator * lvalue.Denominator;
+			lvalue.ToProper();
+			rvalue.ToProper();
+			return tmp;
 		}
 		public static bool operator <(Fraction lvalue, Fraction rvalue)
 		{
 			lvalue.ToImproper();
 			rvalue.ToImproper();
-			return lvalue.Numerator * rvalue.Denominator < rvalue.Numerator * lvalue.Denominator;
+			bool tmp = lvalue.Numerator * rvalue.Denominator < rvalue.Numerator * lvalue.Denominator;
+			lvalue.ToProper();
+			rvalue.ToProper();
+			return tmp;
 		}
+
+		/////////////////////////////////////////////  ( >= / <=)  ///////////////////////////////////////////
 		public static bool operator >=(Fraction lvalue, Fraction rvalue)
 		{
 			return !(lvalue < rvalue);
@@ -240,38 +262,50 @@ namespace Fraction
 		{
 			return !(lvalue > rvalue);
 		}
+
+		public static explicit operator int(Fraction obj)
+		{
+			return obj.Integer;
+		}
+		public static explicit operator double(Fraction obj)
+		{
+			return obj.Integer+(double)obj.Numerator / obj.Denominator;
+		}
 }
 	internal class Program
 	{
 		static void Main(string[] args)
 		{
 			int n = 5;
-			Console.Write("Введите дробное значение -> "); Fraction fr = new Fraction(Console.ReadLine());
-			Console.Write("Введите дробное значение -> "); Fraction fr1 = new Fraction(Console.ReadLine());
-			fr.Reduce();
-			fr.Print();
-			fr1.Print();
+			Console.Write("Введите значение первой дроби -> "); Fraction fr = new Fraction(Console.ReadLine());
+			Console.Write("Введите значение второй дроби -> "); Fraction fr1 = new Fraction(Console.ReadLine());
+			Console.Write("Значение первой дроби: "); fr.Print();
+			Console.Write("Значение второй дроби: "); fr1.Print();
 			Fraction fr2 = fr + fr1;
-			fr2.Print();
+			Console.Write("Сложение дробей: "); fr2.Print();
 			Fraction fr3 = fr - fr1;
-			fr3.Print();
+			Console.Write("Разность дробей: "); fr3.Print();
 			Fraction fr4 = fr1 + n;
-			fr4.Print();
+			Console.Write("Сложение дроби и переменной: "); fr4.Print();
 			fr4++;
-			fr4.Print();
+			Console.Write("Инкримент дроби: "); fr4.Print();
 			Fraction fr5 = fr * fr1;
-			fr5.Print();
+			Console.Write("Произведение дробей: "); fr5.Print();
 			Fraction fr6 = fr * n;
-			fr6.Print();
+			Console.Write("Произведение дроби и переменной: "); fr6.Print();
 			Fraction fr7 = fr / fr1;
-			fr7.Print();
+			Console.Write("Деление дробей: "); fr7.Print();
 			Fraction fr8 = fr / n;
-			fr8.Print();
-			fr.Print();
-			fr1.Print();
-			Console.WriteLine(fr == fr1);
-			Console.WriteLine(fr > fr1);
-			Console.WriteLine(fr <= fr1);
+			Console.Write("Деление дроби на переменную: "); fr8.Print();
+			Console.Write("Значение первой дроби: "); fr.Print();
+			Console.Write("Значение второй дроби: "); fr1.Print();
+			Console.WriteLine($"Равенство дробей {fr == fr1}");
+			Console.WriteLine($"Первая дроби больше второй {fr > fr1}");
+			Console.WriteLine($"Первая дроби меньше или равна второй дробей {fr <= fr1}");
+			int i_fr = (int)fr;
+			double d_fr = (double)fr1;
+			Console.WriteLine($"Преобразование в int первой дроби {i_fr}");
+			Console.WriteLine($"Преобразование в double второй дроби {d_fr}");
 		}
 	}
 }

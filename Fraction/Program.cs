@@ -79,28 +79,36 @@ namespace Fraction
 				}
 			}
 		}
-		Fraction(int integer)
+		public Fraction(int integer)
 		{
 			Integer = integer;
 			denominator = 1;
 		}
-		Fraction(int numerator, int denominator)
+		public Fraction(int numerator, int denominator)
 		{
 			Numerator = numerator;
 			Denominator = denominator;
 		}
-		Fraction(int integer, int numerator, int denominator)
+		public Fraction(int integer, int numerator, int denominator)
 		{
 			Integer = integer;
 			Numerator = numerator;
 			Denominator = denominator;
 		}
-		Fraction(Fraction value)
+		public Fraction(Fraction value)
 		{ 
 			this.integer = value.integer;
 			this.numerator = value.numerator;
 			this.denominator = value.denominator;
 			Console.WriteLine(" <<<< Конструктор копирования >>>> ");
+		}
+		public Fraction(double value)
+		{
+			double precision = 5;
+			Integer = (int)value;
+			Numerator = Convert.ToInt32((value - (double)Integer) * Math.Pow((double)10, precision));
+			Denominator = Convert.ToInt32(Math.Pow((double)10, precision));
+			Reduce();
 		}
 
 		////////////////////////////////  МЕТОДЫ  ///////////////////////////////////////////////////////
@@ -320,6 +328,8 @@ namespace Fraction
 			Console.WriteLine($"Преобразование в double второй дроби {d_fr}");
 			Console.WriteLine("!! Значение первой дроби: " + fr);
 			Console.WriteLine("!! Значение второй дроби: " + fr1);
+			Fraction fr9 = new Fraction(2.5);
+			Console.WriteLine($"Преобразование десятичной дроби в обыкновенную: {fr9}");
 		}
 	}
 }

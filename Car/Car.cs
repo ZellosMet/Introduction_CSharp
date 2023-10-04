@@ -57,12 +57,13 @@ namespace Car
 		{
 			driver_inside = true;
 			threads.panel_thread = new Thread(Panel);
+			threads.panel_thread.IsBackground = true;
 			threads.panel_thread.Start();
 		}
 		public void GetOut()
 		{
 			driver_inside = false;
-			if (threads.panel_thread.IsBackground = true) threads.panel_thread.Abort();
+			if (threads.panel_thread.IsAlive == true) threads.panel_thread.Abort();
 			Console.Clear();
 			Console.WriteLine("Outside");
 		}
@@ -72,13 +73,14 @@ namespace Car
 			{
 				engine.Start();
 				threads.engine_idle_threads = new Thread(EngineIdle);
+				threads.engine_idle_threads.IsBackground = true;
 				threads.engine_idle_threads.Start();
 			}
 		}
 		public void Stop()
 		{
 			engine.Stop();
-			if (threads.engine_idle_threads.IsBackground = true) threads.engine_idle_threads.Abort();
+			if (threads.engine_idle_threads.IsAlive == true) threads.engine_idle_threads.Abort();
 		}
 		public void Control()
 		{
@@ -114,14 +116,16 @@ namespace Car
 						break;
 					case ConsoleKey.W:
 						Accellerate();
+						Thread.Sleep(100);
 						break;
 					case ConsoleKey.S:
 						SlowDown();
+						Thread.Sleep(100);
 						break;
 					default:
 						if (tank.GetFuelLevel() == 0) Stop();
-						if (speed == 0) engine.SetConsumptionPerSecond(0);
-						if(speed == 0 && threads.free_wheeling_threads.IsBackground == true) threads.free_wheeling_threads.Abort();
+						if (speed == 0) { speed = 0; engine.SetConsumptionPerSecond(0); }
+						if (speed == 0 && threads.free_wheeling_threads.IsBackground == true) threads.free_wheeling_threads.Abort();
 						break;
 				}
 			} while (code_key != ConsoleKey.Escape);
@@ -152,6 +156,7 @@ namespace Car
 				speed += accelleration;
 				if (speed > MAX_SPEED) speed = MAX_SPEED;
 				threads.free_wheeling_threads = new Thread(FreeWheeling);
+				threads.free_wheeling_threads.IsBackground = true;
 				threads.free_wheeling_threads.Start();
 				Thread.Sleep(1000);
 			}
@@ -183,7 +188,7 @@ namespace Car
 				Console.WriteLine("Engin is:\t\t" + (engine.Started() ? " started" : " stoped"));
 				Console.WriteLine($"Speed:\t\t\t {speed} km/h");
 				Console.WriteLine($"Consumption per second:\t {engine.GetConsumptionPerSecond()} liters");
-				Thread.Sleep(100);
+				Thread.Sleep(1000);
 			}
 		}
 	}

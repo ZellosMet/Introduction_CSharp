@@ -16,32 +16,28 @@ namespace Car
 		double consumption_per_second;
 		bool is_started;
 		
-		public double get_DEFAULT_CONSUMPTION_PER_SECOND()
+		public double GetConsumptionPerSecond()
+		{ 
+			return consumption_per_second;	
+		}	
+		public void SetConsumptionPerSecond(int speed)
 		{
-			return DEFAULT_CONSUMPTION_PER_SECOND;
+			if (speed == 0) consumption_per_second = DEFAULT_CONSUMPTION_PER_SECOND;
+			else if (speed < 60) consumption_per_second = DEFAULT_CONSUMPTION_PER_SECOND * 20 / 3;
+			else if (speed < 100) consumption_per_second = DEFAULT_CONSUMPTION_PER_SECOND * 14 / 3;
+			else if (speed < 140) consumption_per_second = DEFAULT_CONSUMPTION_PER_SECOND * 20 / 3;
+			else if (speed < 200) consumption_per_second = DEFAULT_CONSUMPTION_PER_SECOND * 25 / 3;
+			else if (speed < 250) consumption_per_second = DEFAULT_CONSUMPTION_PER_SECOND * 10;
 		}
-		public double ConsumptionPerSecond
-		{
-			get{ return consumption_per_second; }
-			set 
-			{
-				if (value == 0) consumption_per_second = DEFAULT_CONSUMPTION_PER_SECOND;
-				else if (value < 60) consumption_per_second = DEFAULT_CONSUMPTION_PER_SECOND * 20/3;
-				else if (value < 100) consumption_per_second = DEFAULT_CONSUMPTION_PER_SECOND * 14/3;
-				else if (value < 140) consumption_per_second = DEFAULT_CONSUMPTION_PER_SECOND * 20/3;
-				else if (value < 200) consumption_per_second = DEFAULT_CONSUMPTION_PER_SECOND * 25/3;
-				else if (value < 250) consumption_per_second = DEFAULT_CONSUMPTION_PER_SECOND * 10;
-			}
-		}
-		 public void start()
+		 public void Start()
 		{
 			is_started = true;
 		}
-		public void stop()
+		public void Stop()
 		{
 			is_started = false;
 		}
-		public bool started()
+		public bool Started()
 		{
 			return is_started;
 		}
@@ -51,7 +47,9 @@ namespace Car
 			else if (consumption > MAX_ENGINE_CONSUMTION) DEFAULT_CONSUMPTION = MAX_ENGINE_CONSUMTION;
 			else DEFAULT_CONSUMPTION = consumption;
 
-			ConsumptionPerSecond = 0;
+			DEFAULT_CONSUMPTION_PER_SECOND = DEFAULT_CONSUMPTION * 3e-5;
+
+			SetConsumptionPerSecond(0);
 			is_started = false;
 			//Console.WriteLine("Engine is ready!");
 		}
